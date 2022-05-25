@@ -21,8 +21,8 @@ def solve(input_str)
 
   max_sum = 0
   s = [0]
-  a.each.with_index(1) do |v, i|
-    s << s.last + v
+  a.each.with_index(1) do |e, i|
+    s << s.last + e
     next if i < k
     max_sum = [max_sum, s[i] - s[i - k]].max
   end

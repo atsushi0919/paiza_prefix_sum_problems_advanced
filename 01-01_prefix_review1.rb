@@ -20,7 +20,7 @@ def solve(input_str)
   _, l, r, *a = input_str.split.map(&:to_i)
 
   s = [0]
-  a.each { |v| s << s.last + v }
+  a.each { |e| s << s.last + e }
   s[r + 1] - s[l]
 end
 
