@@ -22,14 +22,14 @@ def solve(input_str)
   blackbord = max_val = 0
   s = [0]
   a.each do |v|
-    s << s.last + v
-    blackbord += s.last
+    s << s[-1] + v
+    blackbord += s[-1]
     max_val = [max_val, blackbord].max
   end
   max_val
 end
 
-p solve(INPUT2)
+puts solve(STDIN.read)
 
 =begin
 【累積和の練習問題】練習問題 その 1 (paizaランク C 相当)

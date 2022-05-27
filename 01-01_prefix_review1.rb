@@ -20,11 +20,11 @@ def solve(input_str)
   _, l, r, *a = input_str.split.map(&:to_i)
 
   s = [0]
-  a.each { |e| s << s.last + e }
+  a.each { |e| s << s[-1] + e }
   s[r + 1] - s[l]
 end
 
-p solve(INPUT2)
+puts solve(STDIN.read)
 
 =begin
 【累積和の練習問題】復習問題 その 1 (paizaランク C 相当)

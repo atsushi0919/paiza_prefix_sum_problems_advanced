@@ -40,7 +40,7 @@ def solve(input_str)
   s[b - 3] - s[a - 1]
 end
 
-p solve(INPUT3)
+puts solve(STDIN.read)
 
 =begin
 【累積和の練習問題】練習問題 その 2 (paizaランク B 相当)

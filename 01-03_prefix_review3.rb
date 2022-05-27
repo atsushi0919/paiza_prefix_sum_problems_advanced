@@ -22,11 +22,11 @@ def solve(input_str)
 
   a = str.chars.map { |chr| chr == c ? 1 : 0 }
   s = [0]
-  a.each { |e| s << s.last + e }
+  a.each { |e| s << s[-1] + e }
   s[y] - s[x - 1]
 end
 
-p solve(INPUT1)
+puts solve(STDIN.read)
 
 =begin
 【累積和の練習問題】復習問題 その 3 (paizaランク C 相当)
