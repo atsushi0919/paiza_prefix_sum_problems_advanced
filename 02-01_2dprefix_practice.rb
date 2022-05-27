@@ -20,7 +20,7 @@ EOS
 
 def solve(input_str)
   input_lines = input_str.split("\n")
-  n, h, w = input_lines.shift.split.map(&:to_i)
+  n, w, h = input_lines.shift.split.map(&:to_i)
   a = input_lines.map { |l| l.split.map(&:to_i) }
 
   s = Array.new(n + 1) { Array.new(n + 1, 0) }
@@ -29,9 +29,18 @@ def solve(input_str)
       s[y + 1][x + 1] = a[y][x] + s[y][x + 1] + s[y + 1][x] - s[y][x]
     end
   end
+
+  max_sum = -1
+  0.upto(n - h) do |y|
+    0.upto(n - w) do |x|
+      area_sum = s[y + h][x + w] - s[y][x + w] - s[y + h][x] + s[y][x]
+      max_sum = [max_sum, area_sum].max
+    end
+  end
+  max_sum
 end
 
-p solve(INPUT1)
+p solve(INPUT2)
 
 =begin
 【二次元累積和の練習問題】練習問題 その 1 (paizaランク C 相当)

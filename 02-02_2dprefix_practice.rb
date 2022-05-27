@@ -18,6 +18,30 @@ OUTPUT2 = <<~"EOS"
   28
 EOS
 
+def solve(input_str)
+  input_lines = input_str.split("\n")
+  n, w, h = input_lines.shift.split.map(&:to_i)
+  a = input_lines.map { |l| l.split.map(&:to_i) }
+
+  s = Array.new(n + 1) { Array.new(n + 1, 0) }
+  0.upto(n - 1) do |y|
+    0.upto(n - 1) do |x|
+      s[y + 1][x + 1] = a[y][x] + s[y][x + 1] + s[y + 1][x] - s[y][x]
+    end
+  end
+
+  max_sum = -1
+  0.upto(n - h) do |y|
+    0.upto(n - w) do |x|
+      area_sum = s[y + h][x + w] - s[y][x + w] - s[y + h][x] + s[y][x]
+      max_sum = [max_sum, area_sum].max
+    end
+  end
+  max_sum
+end
+
+p solve(INPUT2)
+
 =begin
 【二次元累積和の練習問題】練習問題 その 2 (paizaランク B 相当)
 問題にチャレンジして、ユーザー同士で解答を教え合ったり、コードを公開してみよう！
